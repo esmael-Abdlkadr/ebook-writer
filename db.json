@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "574d",
+      "fullName": "Esmael Abdlkadr",
+      "email": "esmaelabdlkadr00@gmail.com",
+      "password": "1",
+      "role": "author"
+    },
+    {
+      "id": "3055",
+      "fullName": "Abebe Kebede",
+      "email": "abeeb@gmail.com",
+      "password": "1",
+      "role": "Collaborator"
+    },
+    {
+      "id": "66e0",
+      "fullName": "Test  User",
+      "email": "etst@gmail.com",
+      "password": "1",
+      "role": "Author"
+    },
+
+    {
+      "id": "530f",
+      "fullName": "Test User",
+      "email": "testuser@example.com",
+      "password": "password123",
+      "role": "author"
+    }
+  ],
+  "sections": []
+}
