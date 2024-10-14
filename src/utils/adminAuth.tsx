@@ -8,7 +8,7 @@ function useAuth() {
     if (userString) {
       const user = JSON.parse(userString);
       const isAuthor = user?.role;
-      if (isAuthor === "author") {
+      if (isAuthor === "Author") {
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);

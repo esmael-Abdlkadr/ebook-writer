@@ -7,8 +7,10 @@ import LogInForm from "./pages/Login";
 import { SectionsProvider } from "./contexts/SectionContext";
 import Layout from "./pages/Layout";
 import Admin from "./pages/Admin";
-import ProtectedRoute from "./utils/ProtectedRoute";
 import Home from "./pages/Home";
+import { BookProvider } from "./contexts/BookContext";
+import BookList from "./pages/Books";
+import Sections from "./pages/Sections";
 
 const toastOption: ToastOptions = {
   duration: 3000,
@@ -26,27 +28,24 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <SectionsProvider>
-          <Routes>
-            <Route path="/sign-up" element={<Signup />} />
-            <Route path="/login" element={<LogInForm />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Layout />}>
-              <Route
-                path="admin"
-                element={
-                  <ProtectedRoute>
-                    <Admin />
-                  </ProtectedRoute>
-                }
-              />
-            </Route>
-          </Routes>
-          <Toaster
-            position="top-center"
-            gutter={12}
-            containerStyle={{ margin: "8px" }}
-            toastOptions={toastOption}
-          />
+          <BookProvider>
+            <Routes>
+              <Route path="/sign-up" element={<Signup />} />
+              <Route path="/login" element={<LogInForm />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<Layout />}>
+                <Route path="books" element={<BookList />} />
+                <Route path="sections" element={<Sections />} />
+                <Route path="admin" element={<Admin />} />
+              </Route>
+            </Routes>
+            <Toaster
+              position="top-center"
+              gutter={12}
+              containerStyle={{ margin: "8px" }}
+              toastOptions={toastOption}
+            />
+          </BookProvider>
         </SectionsProvider>
       </AuthProvider>
     </BrowserRouter>

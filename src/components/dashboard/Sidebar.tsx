@@ -1,41 +1,30 @@
-import React, { useState } from "react";
-import { useSections } from "../../contexts/SectionContext";
-import SectionItem from "./sections/SectionItem";
+import { useBooks } from "../../contexts/BookContext";
 import Modal from "./Modal";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
-  const { sections, addSection, updateSection } = useSections();
+  const { addBook } = useBooks();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const [parentSectionId, setParentSectionId] = useState<string | null>(null);
-  const [, setParentSectionLevel] = useState<number | null>(null);
-  const [currentSectionId, setCurrentSectionId] = useState<string | null>(null);
-  const [currentSectionTitle, setCurrentSectionTitle] = useState("");
+  const [modalDescription, setModalDescription] = useState("");
 
-  const handleAddSection = (title: string) => {
-    addSection(parentSectionId, title);
-    setIsModalOpen(false);
-  };
+  const userString = localStorage.getItem("user");
+  const user = userString ? JSON.parse(userString) : null;
+  const navigate = useNavigate();
 
-  const handleEditSection = (title: string) => {
-    if (currentSectionId) {
-      updateSection(currentSectionId, title);
+  const handleAddBook = (title: string, description: string) => {
+    if (title && description) {
+      addBook(title, description, user?.id || "", []);
+      setIsModalOpen(false);
+      navigate("/dashboard/books");
     }
-    setIsModalOpen(false);
   };
 
-  const openModalForSection = (parentId: string | null, level: number) => {
-    setParentSectionId(parentId);
-    setParentSectionLevel(level);
-    setModalTitle(parentId ? "Add Subsection" : "Add New Section");
+  const openModal = () => {
     setIsModalOpen(true);
-  };
-
-  const openModalForEdit = (sectionId: string, currentTitle: string) => {
-    setCurrentSectionId(sectionId);
-    setCurrentSectionTitle(currentTitle);
-    setModalTitle("Edit Section");
-    setIsModalOpen(true);
+    setModalTitle("");
+    setModalDescription("");
   };
 
   return (
@@ -45,41 +34,27 @@ const Sidebar: React.FC = () => {
           <h1 className="text-lg font-bold">Cloud Book Writer Platform</h1>
         </div>
         <div className="flex-1 overflow-y-auto">
-          <nav>
-            {sections.map((section) => (
-              <SectionItem
-                key={section.id}
-                section={section}
-                onAddSubsection={(parentId: string | null, level: number) =>
-                  openModalForSection(parentId, level)
-                }
-                onEditSection={(sectionId: string, currentTitle: string) =>
-                  openModalForEdit(sectionId, currentTitle)
-                }
-                level={0} // Initial level is 0 for top-level sections
-              />
-            ))}
-          </nav>
+          <nav>{/* Assuming you have a way to display books */}</nav>
         </div>
+
         <div className="p-4 border-t border-gray-700">
           <button
             className="w-full text-white bg-blue-500 p-2"
-            onClick={() => openModalForSection(null, 0)}
+            onClick={openModal}
           >
-            Add New Section
+            Add New Book
           </button>
         </div>
       </div>
       {isModalOpen && (
         <Modal
-          title={modalTitle}
+          title="New Book"
           onClose={() => setIsModalOpen(false)}
-          onSubmit={
-            modalTitle === "Edit Section" ? handleEditSection : handleAddSection
-          }
-          initialValue={
-            modalTitle === "Edit Section" ? currentSectionTitle : ""
-          }
+          onSubmit={handleAddBook}
+          initialInput1={modalTitle}
+          initialInput2={modalDescription}
+          input1Label="Book Title"
+          input2Label="Book Description"
         />
       )}
     </div>

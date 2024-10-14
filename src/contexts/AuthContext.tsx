@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 interface AuthContextType {
-  user: { email: string; role: string } | null;
+  user: { id: string; fullName: string; email: string; role: string } | null;
   login: (email: string, password: string) => Promise<void>;
   signup: (
     fullName: string,
@@ -69,6 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const logout = () => {
+    localStorage.removeItem("user");
     setUser(null);
   };
 

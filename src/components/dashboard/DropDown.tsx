@@ -9,7 +9,7 @@ interface DropdownProps {
   options: Option[];
   errorMessage?: string;
   title: string;
-  onSelect: (option: Option) => void; // Update the type of onSelect to accept an Option
+  onSelect: (option: Option) => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({

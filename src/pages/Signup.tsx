@@ -13,7 +13,6 @@ interface IFormInputs {
   FullName: string;
   email: string;
   password: string;
-  // rememberMe: boolean;
 }
 const schema = yup.object().shape({
   FullName: yup.string().required("Full Name is required   "),
@@ -43,7 +42,7 @@ const Signup: React.FC = () => {
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     try {
       setLoading(true);
-      await signup(data.FullName, data.email, data.password, "user"); // Default role as author
+      await signup(data.FullName, data.email, data.password, "user");
       reset();
       navigate("/dashboard"); // Redirect after signup
     } catch (error) {

@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "574d",
-      "fullName": "Esmael Abdlkadr",
-      "email": "esmaelabdlkadr00@gmail.com",
-      "password": "1",
-      "role": "Author"
-    },
-    {
       "id": "3055",
       "fullName": "Abebe Kebede",
       "email": "abeeb@gmail.com",
@@ -19,6 +12,20 @@
       "fullName": "Tsehayneh Getaneh",
       "email": "tsehayneh.sinishaw@gmail.com",
       "password": "123",
+      "role": "Author"
+    },
+    {
+      "id": "19f8",
+      "fullName": "Esmael Abdlkadr",
+      "email": "esmaelabdlkadr00@gmail.com",
+      "password": "12",
+      "role": "user"
+    },
+    {
+      "id": "6301",
+      "fullName": "test user",
+      "email": "test@gmaail.com",
+      "password": "1",
       "role": "user"
     }
   ],
