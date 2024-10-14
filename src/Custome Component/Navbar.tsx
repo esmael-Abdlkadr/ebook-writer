@@ -70,7 +70,14 @@ const Navbar = () => {
       className={"bg-[#e2e8f0]  flex gap-5 justify-between"}
     >
       <div></div>
-      {user?.role === "author" && <Link to={"/admin"}>Manage User</Link>}
+      {user?.role === "author" && (
+        <Link
+          to={"admin"}
+          className="text-[20px] font-semibold text-center px-5 py-2 rounded-lg border-none cursor-pointer bg-[#0284c7] text-white flex justify-center items-center hover:bg-[#0369a1] text-nowrap"
+        >
+          Manage User
+        </Link>
+      )}
 
       {/*flex-2*/}
       <div className={"flex items-center  gap-4  flex-end"}>

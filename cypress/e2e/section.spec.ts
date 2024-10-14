@@ -1,3 +1,6 @@
+import { describe, beforeEach, it } from "mocha";
+/// <reference types="cypress" />
+
 describe("Sections Management", () => {
   beforeEach(() => {
     // Log in as an author before each test

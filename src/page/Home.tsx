@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import NavBar from "../components/ui/Navbra";
 import img from "/hero.jpg";
 
@@ -8,7 +9,7 @@ function Home() {
       <div className={"px-8 md:pl-[48px] py-0 mt-[96px] h-[100vh]"}>
         <div
           className={
-            "  mx-0 my-auto py-0 px-8 grid  grid-cols-1 gap-8  md:grid-cols-2 lg:gap-24 items-center"
+            "  mx-0 my-[30px] py-0 px-8 grid  grid-cols-1 gap-8  md:grid-cols-2 lg:gap-24 items-center"
           }
         >
           {/* Text Content */}
@@ -31,11 +32,11 @@ function Home() {
               type="button"
               className="text-[20px] font-semibold text-center px-5 py-3 rounded-lg border-none cursor-pointer bg-[#0284c7] text-white flex justify-center items-center hover:bg-[#0369a1] text-nowrap"
             >
-              Get Started
+              <Link to={"/login"}> Get Started</Link>
             </button>
           </div>
           {/* Image */}
-          <div className="">
+          <div className="my-6">
             <img src={img} alt="Ebook Writer platform" className={"w-full"} />
           </div>
         </div>
