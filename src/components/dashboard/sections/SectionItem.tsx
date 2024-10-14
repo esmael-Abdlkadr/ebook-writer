@@ -1,5 +1,5 @@
 import React from "react";
-import { useSections } from "../context/SectionContext";
+import { useSections } from "../../../contexts/SectionContext";
 
 interface Section {
   id: string;

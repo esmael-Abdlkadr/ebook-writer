@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import Sidebar from "../Custome Component/Sidebar";
-import { SidebarProvider } from "../context/SidebarContext";
+import Sidebar from "../components/dashboard/Sidebar";
+import { SidebarProvider } from "../contexts/SidebarContext";
 import { Outlet } from "react-router-dom";
-import Navbar from "../Custome Component/Navbar";
+import Navbar from "../components/dashboard/Navbar";
 
 interface LayoutProps {
   children?: ReactNode;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useSections } from "../context/SectionContext";
-import SectionItem from "../sections/SectionItem";
-import Modal from "./UI/Modal";
+import { useSections } from "../../contexts/SectionContext";
+import SectionItem from "./sections/SectionItem";
+import Modal from "./Modal";
 
 const Sidebar: React.FC = () => {
   const { sections, addSection, updateSection } = useSections();

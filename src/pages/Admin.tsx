@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Button } from "../components/ui/button";
-import Dropdown from "../components/ui/DropDown";
-import { useAuth } from "../context/AuthContext";
-import Modal from "../components/ui/CustomeModal";
+import { Button } from "../components/dashboard/CustomButton";
+import Dropdown from "../components/dashboard/DropDown";
+import { useAuth } from "../contexts/AuthContext";
+import Modal from "../components/dashboard/CustomeModal";
 import toast from "react-hot-toast";
-import { useSidebarContext } from "../context/SidebarContext";
+import { useSidebarContext } from "../contexts/SidebarContext";
 
 function Admin() {
   const { user } = useAuth();
@@ -26,8 +26,8 @@ function Admin() {
   const us = localStorage.getItem("user");
   console.log("user", us);
   const rolesOptions = [
-    { value: "Author", label: "Author" },
-    { value: "Collaborator", label: "Collaborator" },
+    { value: "author", label: "Author" },
+    { value: "collaborator", label: "Collaborator" },
   ];
 
   // Fetch users on component mount
@@ -48,7 +48,7 @@ function Admin() {
   const handleRoleAssign = async () => {
     if (!selectedUser || !selectedRole) return;
 
-    const updatedUser = { ...selectedUser, role: selectedRole.value };
+    const updatedUser = { ...selectedUser, role: selectedRole.value.toLowerCase() };
 
     const response = await fetch(
       `http://localhost:3001/users/${selectedUser.id}`,
@@ -127,7 +127,7 @@ function Admin() {
             >
               <td className="border border-gray-300 p-4">{user.fullName}</td>
               <td className="border border-gray-300 p-4">{user.email}</td>
-              <td className="border border-gray-300 p-4">{user.role}</td>
+              <td className="border border-gray-300 p-4">{user.role.toLowerCase()}</td>
             </tr>
           ))}
         </tbody>

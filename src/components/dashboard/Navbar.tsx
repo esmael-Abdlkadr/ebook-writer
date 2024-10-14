@@ -2,8 +2,9 @@ import { HiMiniUser, HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { useSidebarContext } from "../context/SidebarContext";
+import { useAuth } from "../../contexts/AuthContext";
+import { useSidebarContext } from "../../contexts/SidebarContext";
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -70,7 +71,7 @@ const Navbar = () => {
       className={"bg-[#e2e8f0]  flex gap-5 justify-between"}
     >
       <div></div>
-      {user?.role === "author" && (
+      {user?.role.toLowerCase() === "author" && (
         <Link
           to={"admin"}
           className="text-[20px] font-semibold text-center px-5 py-2 rounded-lg border-none cursor-pointer bg-[#0284c7] text-white flex justify-center items-center hover:bg-[#0369a1] text-nowrap"
@@ -93,7 +94,7 @@ const Navbar = () => {
             />
             <div className={"flex flex-col"}>
               <span className={"text-xs text-[#3b82f6]"}>
-                {user?.role === "user" ? "" : "Administrator"}
+                {user?.role.toLowerCase() === "user" ? "" : "Administrator"}
               </span>
               <span className={"text-slate-700 font-semibold"}>
                 {user && <span>{user?.fullName}</span>}

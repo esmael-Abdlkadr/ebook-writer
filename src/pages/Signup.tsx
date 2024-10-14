@@ -6,30 +6,36 @@ import * as yup from "yup";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Button from "../Custome Component/UI/Button";
-import { useAuth } from "../context/AuthContext";
+import Button from "../components/dashboard/Button";
+import { useAuth } from "../contexts/AuthContext";
 
 interface IFormInputs {
+  FullName: string;
   email: string;
   password: string;
+  // rememberMe: boolean;
 }
 const schema = yup.object().shape({
+  FullName: yup.string().required("Full Name is required   "),
   email: yup.string().required("Email is required").email("Email is invalid"),
   password: yup.string().required("Password is required"),
 });
-const LogInForm: React.FC = () => {
+const Signup: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { signup } = useAuth();
   const navigate = useNavigate();
+
   const {
     control,
     handleSubmit,
     reset,
+
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
+      FullName: "",
       email: "",
       password: "",
     },
@@ -37,9 +43,9 @@ const LogInForm: React.FC = () => {
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     try {
       setLoading(true);
-      await login(data.email, data.password);
+      await signup(data.FullName, data.email, data.password, "user"); // Default role as author
       reset();
-      navigate("/dashboard");
+      navigate("/dashboard"); // Redirect after signup
     } catch (error) {
       console.error(error);
     } finally {
@@ -53,12 +59,38 @@ const LogInForm: React.FC = () => {
         <div className="max-w-md w-full">
           <div className="p-8 rounded-2xl bg-white shadow">
             <h2 className="text-gray-800 text-center text-2xl font-bold">
-              Log in
+              Sign up
             </h2>
             <form className="mt-8 space-y-4">
               <div>
                 <label className="text-[#1e293b] text-sm mb-2 block  font-medium">
-                  User Name
+                  Full Name
+                </label>
+                <div className="relative flex items-center">
+                  <Controller
+                    control={control}
+                    name="FullName"
+                    render={({ field }) => (
+                      <input
+                        type="text"
+                        {...field}
+                        className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-primary-100"
+                        placeholder="Enter Full Name"
+                      />
+                    )}
+                  />
+                </div>
+                {errors.FullName && (
+                  <p className="text-red-500 text-xs mt-4 text-center font-semibold">
+                    {" "}
+                    {errors.FullName.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="text-[#1e293b] text-sm mb-2 block  font-medium">
+                  Email
                 </label>
                 <div className="relative flex items-center">
                   <Controller
@@ -66,10 +98,10 @@ const LogInForm: React.FC = () => {
                     name="email"
                     render={({ field }) => (
                       <input
-                        type="email"
+                        type="text"
                         {...field}
                         className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-primary-100"
-                        placeholder="Enter username"
+                        placeholder="Enter email"
                       />
                     )}
                   />
@@ -123,41 +155,20 @@ const LogInForm: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-4 my-6">
-                {/* <div className="flex items-center">
-                  <Controller
-                    control={control}
-                    name="rememberMe"
-                    render={({ field }) => (
-                      <input
-                        id="remember-me"
-                        type="checkbox"
-                        {...field}
-                        value={field.value ? "true" : "false"}
-                        className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                      />
-                    )}
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-3 block text-sm text-gray-800"
-                  >
-                    Remember me
-                  </label>
-                </div> */}
-                <div className="text-sm  flex items-center gap-3">
-                  <span>Don't have an account</span>
+                <div className="text-sm  flex gap-4 items-center">
+                  <span>Already have an account</span>
                   <Link
-                    to={"/sign-up"}
-                    className="text-primary-100 text-blue-700 underline"
+                    to={"/login"}
+                    className="text-primary-100 hover:underline text-blue-500 font-semibold"
                   >
-                    Sign Up
+                    Login
                   </Link>
                 </div>
               </div>
 
               <div className="mt-10">
                 <Button
-                  title="Log in"
+                  title="Sign up"
                   handleSubmit={handleSubmit(onSubmit)}
                   loading={loading}
                 />
@@ -170,4 +181,4 @@ const LogInForm: React.FC = () => {
   );
 };
 
-export default LogInForm;
+export default Signup;

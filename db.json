@@ -5,7 +5,7 @@
       "fullName": "Esmael Abdlkadr",
       "email": "esmaelabdlkadr00@gmail.com",
       "password": "1",
-      "role": "author"
+      "role": "Author"
     },
     {
       "id": "3055",
@@ -15,19 +15,11 @@
       "role": "Collaborator"
     },
     {
-      "id": "66e0",
-      "fullName": "Test  User",
-      "email": "etst@gmail.com",
-      "password": "1",
-      "role": "Author"
-    },
-
-    {
-      "id": "530f",
-      "fullName": "Test User",
-      "email": "testuser@example.com",
-      "password": "password123",
-      "role": "author"
+      "id": "4708",
+      "fullName": "Tsehayneh Getaneh",
+      "email": "tsehayneh.sinishaw@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "sections": []

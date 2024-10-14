@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster, ToastOptions } from "react-hot-toast";
-import Signup from "./page/Signup";
-import { AuthProvider } from "./context/AuthContext";
+import Signup from "./pages/Signup";
+import { AuthProvider } from "./contexts/AuthContext";
 
-import LogInForm from "./page/Login";
-import { SectionsProvider } from "./context/SectionContext";
-import Layout from "./page/Layout";
-import Admin from "./page/Admin";
+import LogInForm from "./pages/Login";
+import { SectionsProvider } from "./contexts/SectionContext";
+import Layout from "./pages/Layout";
+import Admin from "./pages/Admin";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import Home from "./page/Home";
+import Home from "./pages/Home";
 
 const toastOption: ToastOptions = {
   duration: 3000,

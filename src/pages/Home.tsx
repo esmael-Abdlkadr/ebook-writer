@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import NavBar from "../components/ui/Navbra";
+import NavBar from "../components/home/Navbra";
 import img from "/hero.jpg";
 
 function Home() {
