@@ -1,32 +1,32 @@
 {
   "users": [
     {
-      "id": "3055",
-      "fullName": "Abebe Kebede",
-      "email": "abeeb@gmail.com",
-      "password": "1",
-      "role": "Collaborator"
-    },
-    {
-      "id": "4708",
-      "fullName": "Tsehayneh Getaneh",
-      "email": "tsehayneh.sinishaw@gmail.com",
-      "password": "123",
+      "id": "1001",
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
       "role": "Author"
     },
     {
-      "id": "19f8",
-      "fullName": "Esmael Abdlkadr",
-      "email": "esmaelabdlkadr00@gmail.com",
-      "password": "12",
-      "role": "user"
+      "id": "1002",
+      "fullName": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "password123",
+      "role": "Collaborator"
     },
     {
-      "id": "6301",
-      "fullName": "test user",
-      "email": "test@gmaail.com",
-      "password": "1",
-      "role": "user"
+      "id": "1003",
+      "fullName": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "password123",
+      "role": "User"
+    },
+    {
+      "id": "1004",
+      "fullName": "Bob Brown",
+      "email": "bob.brown@example.com",
+      "password": "password123",
+      "role": "User"
     }
   ],
   "sections": []
